@@ -1,25 +1,8 @@
 import { Container } from "@/components/Container";
-import { endpoint } from "@/utils/endpoint";
 import Link from "next/link";
 import Image from "next/image";
-
-interface Character {
-  id: number;
-  name: string;
-  slug: string;
-  avatar: string;
-}
-
-async function getAllCharacters(): Promise<Character[]> {
-  const res = await fetch(`${endpoint}/characters`);
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  const data = await res.json();
-
-  return data.characters;
-}
+import { Character } from "@/types/Character";
+import { getAllCharacters } from "@/lib/character";
 
 export default async function Page() {
   const data = await getAllCharacters();
