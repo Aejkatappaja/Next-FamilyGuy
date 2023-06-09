@@ -10,7 +10,7 @@ export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const data = await getAllCharacters();
-  return data.map((character: Character) => ({ slug: character.slug }));
+  return data.data.map((character: Character) => ({ slug: character.slug }));
 }
 
 export async function getCharacterBySlug(slug: string) {
